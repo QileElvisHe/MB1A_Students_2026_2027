@@ -48,7 +48,7 @@ print(class(chinese))
 Radiation_ID<-"CX1"
 Control_ID<-"CX2"
 Radiation_treated<-TRUE
-Radiation_treated<-FALSE
+Control_treated<-FALSE
 Radiation_num_cells_before<-5415
 Control_num_cells_before<-8123
 Radiation_num_cells_after<-1432
