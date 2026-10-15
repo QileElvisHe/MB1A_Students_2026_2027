@@ -1,0 +1,57 @@
+---
+title: "MB1A Practical 1"
+author: "Qile (Elvis) He"
+format: html
+---
+
+**Exercise - Using functions**
+
+Round the number 3.14159 to the nearest whole number
+```{r}
+round(3.14159)
+```
+The result I obtained is 3.
+
+**Exercise - Argument order**
+
+Specify arguments in order:
+```{r}
+print(rep(5,7))
+```
+Using their names:
+```{r}
+print(rep(x=5,times=7))
+```
+
+**Exercise - Assigning values to variables**
+
+The output should be 5 as the line:
+whatsmynumber<-1
+would be replaced by the later line:
+whatsmynumber<-5
+
+**Exercise - Character, numerical and logical variables**
+
+```{r}
+#Define the variables
+myname<-"Elvis"
+myage<-19
+chinese<-TRUE
+#Check their types
+print(class(myname))
+print(class(myage))
+print(class(chinese))
+```
+**Exercise - Using variables of different types**
+
+```{r}
+Radiation_ID<-"CX1"
+Control_ID<-"CX2"
+Radiation_treated<-TRUE
+Radiation_treated<-FALSE
+Radiation_num_cells_before<-5415
+Control_num_cells_before<-8123
+Radiation_num_cells_after<-1432
+Control_num_cells_after<-7543
+```
+
