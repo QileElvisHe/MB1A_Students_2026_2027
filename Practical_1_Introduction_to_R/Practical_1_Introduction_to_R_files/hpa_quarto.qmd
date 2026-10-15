@@ -1,0 +1,25 @@
+---
+title: "MB1A Practical 1"
+author: "Qile (Elvis) He"
+format: html
+---
+
+I am trying to find which of the sum of the number of regionally elevated genes in the forebrain of human, pig, and mouse is the largest.
+
+The number of regional elevated genes in human cebral cortex, basal ganglia, thalamus, and hypothalamus is 180, 83, 57,and 110.
+
+The number of regional elevated genes in pig cebral cortex, basal ganglia, thalamus, and hypothalamus is 109, 157, 31,and 45.
+
+
+The number of regional elevated genes in mouse cebral cortex, basal ganglia, thalamus, and hypothalamus is 55, 185, 60,and 98.
+
+```{r}
+human_elevated<-sum(180,83,57,110)
+pig_elevated<-sum(109,157,31,45)
+mouse_elevated<-sum(55,185,60,98)
+
+print(human_elevated)
+print(pig_elevated)
+print(mouse_elevated)
+```
+Therefore, human has the highest number of genes with regionally elevated expression.
