@@ -1,0 +1,30 @@
+---
+title: "MB1A Practical 1"
+author: "Qile (Elvis) He"
+format: html
+---
+```{r}
+#Load the packages required
+library(tidyverse)
+library(gt)
+```
+
+**Exercise - Reading UK public health monitoring data**
+The public health website is not accessible to me. Therefore, the rhinovirus data is used in the following exercise.
+```{r}
+rhinovirus<-read_csv("data/ukhsa-chart-download-rhinovirus.csv")
+gt(head(rhinovirus))
+```
+
+**Exercise - Plotting public health data**
+```{r}
+ggplot(rhinovirus,aes(
+  x=date,
+  y=metric_value
+))+
+  geom_line(colour="blue")+
+  xlab("Specimen Week")+
+  ylab("Weekly possibility (%)")+
+  ggtitle("Weekly posibility of people receiving postive result from a PCR test")
+```
+

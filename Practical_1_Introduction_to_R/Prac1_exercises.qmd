@@ -3,6 +3,12 @@ title: "MB1A Practical 1"
 author: "Qile (Elvis) He"
 format: html
 ---
+```{r}
+#Load the required the packages
+library(tidyverse)
+library(gt)
+```
+
 
 **Exercise - Using functions**
 
@@ -53,5 +59,46 @@ Radiation_num_cells_before<-5415
 Control_num_cells_before<-8123
 Radiation_num_cells_after<-1432
 Control_num_cells_after<-7543
+```
+
+**Excercise - Vectors**
+```{r}
+Radiation_ID<-"CX1"
+Control_ID<-"CX2"
+Radiation_treated<-TRUE
+Control_treated<-FALSE
+Radiation_num_cells_before<-5415
+Control_num_cells_before<-8123
+Radiation_num_cells_after<-1432
+Control_num_cells_after<-7543
+
+ID<-c(Radiation_ID,Control_ID)
+treatment<-c(Radiation_treated,Control_treated)
+num_before<-c(Radiation_num_cells_before,Control_num_cells_before)
+num_after<-c(Radiation_num_cells_after,Control_num_cells_after)
+
+print(ID)
+print(treatment)
+print(num_before)
+print(num_after)
+```
+**Exercise - Indexing**
+
+```{r}
+all_my_pets<-c("dogs","horse","guinea pig","chicken","cat")
+fourth_pet<-all_my_pets[4]
+print(fourth_pet)
+```
+
+**Exercise - Creating a data frame**
+
+```{r}
+result_table<-tibble(
+  cell_id=ID,
+  treated=treatment,
+  num_cells_before=num_before,
+  num_cells_after=num_after
+)
+gt(result_table)
 ```
 
