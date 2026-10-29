@@ -1,0 +1,153 @@
+---
+title: "Worked Example"
+author: "Qile (Elvis) He"
+
+---
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+```
+
+
+**Exercise - Examining the source**
+
+The label of x axis is longitude.
+The label of y axis is latitude.
+
+The color of the bird is a tag of the breeding destination of the birds.
+
+The shape represents the type of the site.
+
+**Exercise - Examining the data**
+
+The longitude of the Moscow breeding site is 36.7
+
+**Exercise - Read the first CSV file**
+
+```{r}
+bird_breeding_sites<-read_csv("data/breeding_site_locations.csv")
+gt(bird_breeding_sites)
+```
+
+```{r}
+colnames(bird_breeding_sites)
+```
+```{r}
+glimpse(bird_breeding_sites)
+```
+**Number of rows**
+
+```{r}
+print(nrow(bird_breeding_sites))
+```
+**Number of columns**
+
+```{r}
+print(ncol(bird_breeding_sites))
+```
+
+**Dimension of the table**
+
+```{r}
+print(dim(bird_breeding_sites))
+```
+
+**Exercise - Read the seconds CSV file**
+
+```{r}
+bird_migration_sites<-read.csv("data/migratory_connectivity_dataset.csv")
+gt(head(bird_migration_sites))
+```
+
+**Exercise - The glimpse function**
+
+First, use glimpse to print out the data:
+
+```{r}
+glimpse(bird_migration_sites)
+```
+
+Based on the output above, there are 34 columns and 100 rows in the table.
+The data type for the column Tag is <chr>. <chr> stands for character.
+The data type for the column Birth is <int>. <int> (or <dbl>) stands for integer (numeric).
+
+**Column Names**
+
+```{r}
+colnames(bird_migration_sites)
+```
+
+**Selecting columns**
+
+```{r}
+bird_breeding_selected <- bird_breeding_sites |>
+  select(Site, Longitude, Latitude)
+
+gt(bird_breeding_selected)
+```
+
+**Remove duplicate rows**
+
+```{r}
+bird_breeding_selected <- bird_breeding_sites |>
+  select(Site, Longitude, Latitude) |>
+  distinct()
+
+gt(bird_breeding_selected)
+```
+
+**Rename Columns**
+
+```{r}
+bird_breeding_selected <- bird_breeding_sites |>
+  select(Site, Longitude, Latitude) |>
+  distinct() |>
+  rename(Breeding_Longitude = Longitude, Breeding_Latitude = Latitude)
+
+gt(bird_breeding_selected)
+```
+
+**Exercise - Select, de-duplicate and rename**
+
+```{r}
+bird_migration_selected<-bird_migration_sites|>
+  select(Site,
+         winterLongitude,
+         winterLatitude,
+         pslon,
+         pslat,
+         iblon,
+         iblat,
+         awestlon,
+         awestlat
+         )|>
+  distinct()|>
+  rename(Winter_Longitude=winterLongitude,
+         Winter_Latitude=winterLatitude,
+         Stopover_Longitude=pslon,
+         Stopover_Latitude=pslat,
+         Iberian_Longitude=iblon,
+         Iberian_Latitude=iblat,
+         Westmost_Longitude=awestlon,
+         Westmost_Latitude=awestlat
+         )
+
+gt(head(bird_migration_selected))
+```
+
+**Exercise - Filtering a data frame**
+1. Breeding site data excluding Spain
+
+```{r}
+bird_breeding_exc<-bird_breeding_sites|>
+  filter(Site!="Spain")
+gt(bird_breeding_exc)
+```
+2. Migration site data excluding Spain
+```{r}
+bird_migration_exc<-bird_migration_sites|>
+  filter(Site!="Spain")
+gt(bird_migration_exc)
+```
+
