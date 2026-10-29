@@ -141,12 +141,14 @@ gt(head(bird_migration_selected))
 
 ```{r}
 bird_breeding_exc<-bird_breeding_selected|>
+  distinct()|>
   filter(Site!="Spain")
 gt(bird_breeding_exc)
 ```
 2. Migration site data excluding Spain
 ```{r}
 bird_migration_exc<-bird_migration_selected|>
+  distinct()|>
   filter(Site!="Spain")
 gt(bird_migration_exc)
 ```
