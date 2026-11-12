@@ -270,3 +270,72 @@ write_csv(spring_data, "output/birds_spring.csv")
 write_csv(autumn_data, "output/birds_autumn.csv")
 ```
 
+**Exercise - Adding axes and points**
+```{r}
+ggplot(spring_data,aes(
+  x=Longitude,
+  y=Latitude
+  ))+geom_point()+
+  annotation_borders(linewidth=0.2)+
+  coord_quickmap()
+```
+
+**Exercise - Calculating axis limits**
+Minimum longitude
+```{r}
+min_lon<-spring_data|>
+  pull(Longitude)|>
+  min()
+print(min_lon)
+```
+Maximum Longitude
+```{r}
+max_lon<-spring_data|>
+  pull(Longitude)|>
+  max()
+print(max_lon)
+```
+Minimum latitude
+```{r}
+min_lat<-spring_data|>
+  pull(Latitude)|>
+  min()
+print(min_lat)
+```
+Maximum latitude
+```{r}
+max_lat<-spring_data|>
+  pull(Latitude)|>
+  max()
+print(max_lat)
+```
+**Exercise - Setting axis limits**
+```{r}
+ggplot(spring_data,aes(
+  x=Longitude,
+  y=Latitude,
+  colour=Site
+  ))+geom_point(size=3)+
+  annotation_borders(linewidth=0.2)+
+  coord_quickmap(xlim=c(min_lon-2,max_lon+2),
+                 ylim=c(min_lat-2,max_lat+2))
+```
+
+**Exercise - Grouping points & Add paths**
+```{r}
+ggplot(spring_data,aes(
+  x=Longitude,
+  y=Latitude,
+  colour=Site,
+  shape=Location_Type
+  ))+geom_point(size=3)+
+  annotation_borders(linewidth=0.2)+
+  coord_quickmap(xlim=c(min_lon-2,max_lon+2),
+                 ylim=c(min_lat-2,max_lat+2))+
+  geom_path(aes(group = Site)) +
+  ggtitle("Pied Flycatcher Spring Migration Routes") +
+  xlab("Longitude (°)") +
+  ylab("Latitude (°)") +
+  theme_minimal()
+  
+```
